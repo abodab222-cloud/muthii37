@@ -41,6 +41,13 @@ body{
     transform:translate(-50%,-50%);
 }
 
+<!-- الموسيقى -->
+<script>
+let bgMusic = new Audio("minecraft-music.mp3");
+bgMusic.loop = true;
+function playMusicOnce(){if(bgMusic.paused){bgMusic.play().catch(e=>{console.log("Press any button to start music");});}}
+</script>
+    
 .title{
     font-size:80px;
     text-shadow:5px 5px #000;
