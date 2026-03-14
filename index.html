@@ -23,7 +23,7 @@ body{
     position:fixed;
     width:300%;
     height:100%;
-    background:url(minecraft-bg.jpg) repeat-x center/cover;
+    background:url(minecraft-bg.png) repeat-x center/cover;
     animation:movebg 60s linear infinite;
     filter:blur(3px) brightness(0.7);
 }
@@ -39,6 +39,7 @@ body{
     top:40%;
     left:50%;
     transform:translate(-50%,-50%);
+    z-index:10;
 }
 
 .title{
@@ -73,6 +74,7 @@ button:hover{
     transform:translate(-50%,-50%);
     width:70%;
     font-size:28px;
+    z-index:10;
 }
 
 .back{
@@ -84,30 +86,33 @@ button:hover{
 
 <div id="background"></div>
 
+<!-- الأصوات -->
 <audio id="music" src="minecraft-music.mp3" autoplay loop></audio>
 <audio id="click" src="click.mp3"></audio>
 <audio id="cat" src="cat.mp3"></audio>
-<audio id="villager" src="villager.mp3"></audio>
 
+<!-- القائمة الرئيسية -->
 <div id="menu">
-<div class="title">muthii37</div>
-<button onclick="openPage('eid')">happy Eid</button>
-<button onclick="openPage('beautiful')">you are beautiful</button>
-<button onclick="openPage('money')">money...</button>
+    <div class="title">muthii37</div>
+    <button onclick="openPage('eid')">happy Eid</button>
+    <button onclick="openPage('beautiful')">you are beautiful</button>
+    <button onclick="openPage('money')">money...</button>
 </div>
 
+<!-- الصفحة الأولى -->
 <div id="eid" class="page">
 موثي كُل عام وأنتي كُل اعيادي  
 والناسُ يُعايدون بِعيدهم  
 وانا كُل يوماً معكِ عيدٌ 🖤✨
 <br>
-<button class="back" onclick="backMenu('cat')">Back</button>
+<button class="back" onclick="backMenu()">Back</button>
 </div>
 
+<!-- الصفحة الثانية -->
 <div id="beautiful" class="page">
 انتي جميله ياموثي .  
 حتى وان كُنتي بِلباس العيد او لا  
-وجمالُكِ كُل عيدٍ يزداد .
+وجمالُكُ كُل عيدٍ يزداد .
 <br>
 لم ارى اجمل أمراه سواكِ  
 انتي جميله النساء وأميره السيدات .
@@ -115,16 +120,17 @@ button:hover{
 بِلباس العيد ستكونين  
 أميره وجميله وفاتنه.
 <br>
-تحلي بجمالُكِ  
+تحلي بجمالُك  
 وتيقني بأنكِ اجمل أمراه  
 في هذا العالم 🖤✨
 <br>
-<button class="back" onclick="backMenu('villager')">Back</button>
+<button class="back" onclick="backMenu()">Back</button>
 </div>
 
+<!-- الصفحة الثالثة -->
 <div id="money" class="page">
 اذا باغيه عيديتش تكون كامله  
-لازم تكوني متاكده مسوي هالشياء  
+لازم تكوني متاكده مسوي هالاشياء  
 وعلى كلشي ناقص بنقص من العيديه 🙂‍↔️
 <br><br>
 ١- اشوف صورتش بكشخه العيد  
@@ -141,28 +147,26 @@ button:hover{
 </div>
 
 <script>
+// فتح الصفحات
 function openPage(page){
     document.getElementById("menu").style.display="none";
     document.getElementById("eid").style.display="none";
     document.getElementById("beautiful").style.display="none";
     document.getElementById("money").style.display="none";
     document.getElementById(page).style.display="block";
-    document.getElementById("click").play();
+    document.getElementById("click").play(); // صوت الكليك لكل زر
 }
 
-function backMenu(sound){
+// زر العودة - كل Back يصدر صوت cat
+function backMenu(){
     document.getElementById("menu").style.display="block";
     document.getElementById("eid").style.display="none";
     document.getElementById("beautiful").style.display="none";
     document.getElementById("money").style.display="none";
 
-    if(sound=="cat"){
-        document.getElementById("cat").play();
-    }
-    if(sound=="villager"){
-        document.getElementById("villager").play();
-    }
+    document.getElementById("cat").play();
 }
 </script>
+
 </body>
 </html>
