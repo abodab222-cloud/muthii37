@@ -1,169 +1,212 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <title>muthii37</title>
+
 <style>
+
+/* خط ماينكرافت */
 @font-face{
-    font-family:Minecraft;
-    src:url(Minecraftia.ttf);
+font-family:'Minecraft';
+src:url('./Minecraftia.ttf') format('truetype');
 }
 
 body{
-    margin:0;
-    overflow:hidden;
-    font-family:Minecraft;
-    color:white;
-    text-align:center;
-    background:black;
+margin:0;
+overflow:hidden;
+background:black;
+font-family:'Minecraft', Arial;
+color:white;
+text-align:center;
 }
 
-/* الخلفية المتحركة */
-#background{
-    position:fixed;
-    width:300%;
-    height:100%;
-    background:url(minecraft-bg.png) repeat-x center/cover;
-    animation:movebg 60s linear infinite;
-    filter:blur(3px) brightness(0.7);
+/* الخلفية */
+#bg{
+position:fixed;
+width:400%;
+height:100%;
+background:url('./minecraft-bg.png') repeat-x center/cover;
+animation:bgmove 80s linear infinite;
+filter:blur(5px) brightness(0.6);
 }
 
-@keyframes movebg{
-    0%{transform:translateX(0);}
-    100%{transform:translateX(-50%);}
+@keyframes bgmove{
+0%{transform:translateX(0);}
+100%{transform:translateX(-50%);}
+}
+
+/* الشعار */
+.title{
+position:absolute;
+top:12%;
+left:50%;
+transform:translateX(-50%);
+font-size:90px;
+text-shadow:6px 6px black;
+animation:shake 2s infinite;
+}
+
+@keyframes shake{
+0%{transform:translateX(-50%) rotate(0deg);}
+50%{transform:translateX(-50%) rotate(1deg);}
+100%{transform:translateX(-50%) rotate(0deg);}
 }
 
 /* القائمة */
 #menu{
-    position:absolute;
-    top:40%;
-    left:50%;
-    transform:translate(-50%,-50%);
+position:absolute;
+top:45%;
+left:50%;
+transform:translate(-50%,-50%);
 }
 
-<!-- الموسيقى -->
-<script>
-let bgMusic = new Audio("minecraft-music.mp3");
-bgMusic.loop = true;
-function playMusicOnce(){if(bgMusic.paused){bgMusic.play().catch(e=>{console.log("Press any button to start music");});}}
-</script>
-    
-.title{
-    font-size:80px;
-    text-shadow:5px 5px #000;
-    margin-bottom:40px;
-}
-
-/* الأزرار */
+/* أزرار ماينكرافت */
 button{
-    display:block;
-    margin:15px auto;
-    padding:15px 80px;
-    font-size:24px;
-    font-family:Minecraft;
-    color:white;
-    background:#6b6b6b;
-    border:4px solid #3a3a3a;
-    cursor:pointer;
+display:block;
+width:420px;
+margin:12px auto;
+padding:15px;
+font-size:24px;
+font-family:'Minecraft';
+color:#e0e0e0;
+
+background:linear-gradient(#bfbfbf,#8f8f8f);
+border:4px solid #3a3a3a;
+
+box-shadow:
+inset -2px -2px #2a2a2a,
+inset 2px 2px #ffffff;
+
+cursor:pointer;
 }
 
 button:hover{
-    background:#8a8a8a;
+background:linear-gradient(#d0d0d0,#9a9a9a);
+transform:scale(1.03);
 }
 
 /* الصفحات */
 .page{
-    display:none;
-    position:absolute;
-    top:50%;
-    left:50%;
-    transform:translate(-50%,-50%);
-    width:70%;
-    font-size:28px;
+display:none;
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+width:70%;
+font-size:26px;
+line-height:1.8;
 }
 
 .back{
-    margin-top:40px;
+margin-top:40px;
 }
+
 </style>
 </head>
+
 <body>
 
-<div id="background"></div>
+<div id="bg"></div>
 
-<audio id="music" src="minecraft-music.mp3" autoplay loop></audio>
-<audio id="click" src="click.mp3"></audio>
-<audio id="cat" src="cat.mp3"></audio>
+<audio id="minecraft-music" loop>
+<source src="./minecraft-music.mp3" type="audio/mpeg">
+</audio>
+
+<audio id="click" src="./click.mp3"></audio>
+<audio id="cat" src="./cat.mp3"></audio>
+
+<div class="title">muthii37</div>
 
 <div id="menu">
-<div class="title">muthii37</div>
-<button onclick="openPage('eid')">happy Eid</button>
-<button onclick="openPage('beautiful')">you are beautiful</button>
-<button onclick="openPage('money')">money...</button>
+<button onclick="openPage('eid')">Happy Eid</button>
+<button onclick="openPage('beautiful')">You Are Beautiful</button>
+<button onclick="openPage('money')">Money...</button>
 </div>
 
 <div id="eid" class="page">
-موثي كُل عام وأنتي كُل اعيادي  
-والناسُ يُعايدون بِعيدهم  
-وانا كُل يوماً معكِ عيدٌ 🖤✨
+Muthi, every year you are all my Eids.  
+People celebrate their own Eid,  
+but every day with you feels like Eid. 🖤✨
+
 <br>
 <button class="back" onclick="backMenu()">Back</button>
 </div>
 
 <div id="beautiful" class="page">
-انتي جميله ياموثي .  
-حتى وان كُنتي بِلباس العيد او لا  
-وجمالُكُ كُل عيدٍ يزداد .
-<br>
-لم ارى امراة اجمل سواكِ  
-انتي جميله النساء وأميره السيدات .
-<br>
-بِلباس العيد ستكونين  
-أميره وجميله وفاتنه.
-<br>
-تحلي بجمالُك  
-وتيقني بأنكِ اجمل امراه  
-في هذا العالم 🖤✨
+You are beautiful, Muthi.  
+Whether you are wearing Eid clothes or not,  
+your beauty grows every Eid.
+
+I have never seen a more beautiful woman.  
+You are the beauty of all women and the queen of ladies.
+
+In your Eid outfit,  
+you will be stunning, elegant, and charming.
+
+Embrace your beauty,  
+and believe that you are the most beautiful  
+woman in this world 🖤✨
+
 <br>
 <button class="back" onclick="backMenu()">Back</button>
 </div>
 
 <div id="money" class="page">
-اذا باغيه عيديتش تكون كامله  
-لازم تكوني متاكده مسوي هالاشياء  
-وعلى كلشي ناقص بنقص من العيديه 🙂‍↔️
+If you want your full Eid money,  
+make sure you did all of these...  
+or I will start reducing it 🙂‍↔️
+
 <br><br>
-١- اشوف صورتش بكشخه العيد  
+
+1- Show me your Eid outfit  
 <br>
-٢- اسمع فويس منش يهنيني للعيد  
+2- Send me a voice wishing me Eid  
 <br>
-٣- انا اول واحد اشوف الكشخه  
+3- I must be the first to see your outfit  
 <br>
-٤- تعطيني بوساتتتتتتت  
+4- Give me lots of kisses 😏  
 <br>
-٥- تصوري معاييي
+5- Take pictures with me  
+
 <br>
 <button class="back" onclick="backMenu()">Back</button>
 </div>
 
 <script>
+
+/* تشغيل الموسيقى (إجباري) */
+const music = document.getElementById("minecraft-music")
+
+window.addEventListener("click", () => {
+music.play()
+})
+
 function openPage(page){
-    document.getElementById("menu").style.display="none";
-    document.getElementById("eid").style.display="none";
-    document.getElementById("beautiful").style.display="none";
-    document.getElementById("money").style.display="none";
-    document.getElementById(page).style.display="block";
-    document.getElementById("click").play();
+
+document.getElementById("menu").style.display="none"
+
+document.getElementById("eid").style.display="none"
+document.getElementById("beautiful").style.display="none"
+document.getElementById("money").style.display="none"
+
+document.getElementById(page).style.display="block"
+
+document.getElementById("click").play()
 }
 
 function backMenu(){
-    document.getElementById("menu").style.display="block";
-    document.getElementById("eid").style.display="none";
-    document.getElementById("beautiful").style.display="none";
-    document.getElementById("money").style.display="none";
 
-    document.getElementById("cat").play();
+document.getElementById("menu").style.display="block"
+
+document.getElementById("eid").style.display="none"
+document.getElementById("beautiful").style.display="none"
+document.getElementById("money").style.display="none"
+
+document.getElementById("cat").play()
 }
+
 </script>
+
 </body>
 </html>
